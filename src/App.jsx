@@ -11,6 +11,12 @@ import WebDevelopment from './components/WebDevelopment';
 import GraphicDesign from './components/GraphicDesign';
 import Animation from './components/Animation';
 import AppDevelopment from './components/AppDevelopment';
+import EBook from './components/EBook';
+import PPCScreen from './components/PPC';
+import BusinessAnalysisScreen from './components/Ba';
+import ProjectManagementScreen from './components/PM';
+import SMMScreen from './components/DigitalMarketing';
+import DigitalMarketingScreen from './components/DigitalMarketing';
 
 function App() {
     return (
@@ -28,6 +34,11 @@ function App() {
                     <Route path="/graphic-design" element={<GraphicDesign />} />
                     <Route path="/app-development" element={<AppDevelopment />} />
                     <Route path="/animations" element={<Animation />} />
+                    <Route path="/ebook" element={<EBook />} />
+                    <Route path="/pay-per-click" element={<PPCScreen />} />
+                    <Route path="/business-analysis" element={<BusinessAnalysisScreen />} />
+                    <Route path="/project-management" element={<ProjectManagementScreen />} />
+                    <Route path="/digital-marketing" element={<DigitalMarketingScreen />} />
                 </Routes>
                 <Footer />
             </div>

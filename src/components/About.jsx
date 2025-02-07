@@ -5,21 +5,17 @@ const About = () => {
    <div className="about-container">
       {/* Background Video */}
       <div className="about-video-overlay">
-        <video autoPlay loop muted className="about-background-video">
-          <source src="/aboutus3.mp4" type="video/mp4" />
+        <video autoPlay playsInline loop muted className="about-background-video">
+          <source src="/fronvideo.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
       
        {/* Content Section */}
        <div className="about-content">
         <h2>About</h2>
-        <h1>Digital Consulting</h1>
+        <h1>Devs And Visuals</h1>
         <p>
-          What's special about your product, service, or company? Use this space
-          to highlight the things that set you apart from your competition,
-          whether it's a special feature, a unique philosophy, or awards and
-          recognition that you have received. Think of this as your elevator
-          pitch to get the reader's attention.
+        At Devs and Visuals, we believe that your imagination is our creation. We specialize in crafting custom software and eye-catching designs that bring your vision to life. Our expert team of developers and designers work hand-in-hand to create innovative, user-friendly solutions that captivate and inspire. Whether you need powerful websites, applications, stunning visuals or animations, we are here to turn your ideas into reality.
         </p>
       </div>
     </div>

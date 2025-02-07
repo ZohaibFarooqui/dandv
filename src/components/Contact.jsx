@@ -1,54 +1,82 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { FaGreaterThan, FaHome } from 'react-icons/fa';
+import React, { useRef } from "react";
+import emailjs from "@emailjs/browser";
+import { FaMapMarkerAlt, FaEnvelope, FaFacebookF, FaTwitter, FaInstagram, FaLinkedin } from 'react-icons/fa';
 
-const Contact = () => (
-  <section id="contact">
-     <div className="about-header">
+const Contact = () => {
+  const form = useRef();
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    emailjs
+      .sendForm(
+        "service_i3zybnk", // Replace with your EmailJS Service ID
+        "template_prxy0mh", // Replace with your EmailJS Template ID
+        form.current, {publicKey: 'LPklQf6m-XQ-YUZ2U',}
         
-        <div className="about-header-content">
-          <h2>Send us a messsage</h2>
-          <h1>Contact Us</h1>
-        </div>
-        <div className="breadcrumbs">
-        <div className="breadcrumb-content">
-          <Link to="/"><FaHome /> Home </Link> 
-          <FaGreaterThan />
-          <span>Contact Us</span>
-        </div>
-      </div>
+      )
+      .then(
+        (result) => {
+          console.log(result.text);
+          alert("Message sent successfully!");
+        },
+        (error) => {
+          console.log(error.text);
+          alert("Failed to send the message, please try again.");
+        }
+      );
 
-      </div>
+    // Reset the form fields
+    e.target.reset();
+  };
+
+  return (
     <div className="contact-container">
-      <div className="contact-header">
-        <h1>Contact Us</h1>
-        <p>We'd love to hear from you. Fill out the form below or get in touch using our contact details.</p>
+      {/* Background Video */}
+      <div className="video-overlay">
+        <video autoPlay loop playsInline muted className="background-video">
+          <source src="/fronvideo.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
       </div>
-      <div className="contact-content">
-        <div className="contact-info">
-          <h2>Our Contact Details</h2>
-          <p><strong>Address:</strong> Block 7 Gulistan-e-Johar, Karachi, Pakistan</p>
-          <p><strong>Phone:</strong> +1 (123) 456-7890</p>
-          <p><strong>Email:</strong> contact@prixmotorsport.com</p>
+
+      {/* Left Section: Contact Details */}
+      <div className="left-section">
+        <h2>Get a quote or set up a consultation.</h2>
+        <div className="details">
+          {/* <p><strong>PHONE</strong><br />(123) 456-7890</p> */}
+          <p><strong>EMAIL</strong><br />info@devsandvisuals.com</p>
+           <p><strong>SOCIAL</strong></p>
+         <div className="social-media-links">
+                    <a href="https://www.facebook.com/share/15pGfSK3hF/" target="_blank" rel="noopener noreferrer"><FaFacebookF /></a>
+                   {/* <a href="https://twitter.com" target="_blank" rel="noopener noreferrer"><FaX /></a>  */}
+                   <a href="https://www.instagram.com/devsandvisuals/?utm_source=qr&r=nametag" target="_blank" rel="noopener noreferrer"><FaInstagram /></a>
+                   <a href="https://www.linkedin.com/company/devs-and-visuals/" target="_blank" rel="noopener noreferrer"><FaLinkedin /></a>
+                 </div>
         </div>
-        <div className="contact-form">
-          <h2>Send Us a Message</h2>
-          <form>
+      </div>
+
+      {/* Right Section: Form */}
+      <div className="right-section">
+        <form ref={form} onSubmit={sendEmail}>
+          <h2>Contact Us</h2>
+          <div className="form-group">
             <label htmlFor="name">Name</label>
-            <input type="text" id="name" name="name" required />
-
+            <input type="text" id="name" name="user_name" placeholder="Enter your name" required />
+          </div>
+          <div className="form-group">
             <label htmlFor="email">Email</label>
-            <input type="email" id="email" name="email" required />
-
+            <input type="email" id="email" name="user_email" placeholder="Enter your email" required />
+          </div>
+          <div className="form-group">
             <label htmlFor="message">Message</label>
-            <textarea id="message" name="message" rows="5" required></textarea>
-
-            <button type="submit" className="btn btn-primary">Send Message</button>
-          </form>
-        </div>
+            <textarea id="message" name="message" placeholder="Write your message" required></textarea>
+          </div>
+          <button type="submit">Submit</button>
+        </form>
       </div>
     </div>
-  </section>
-);
+  );
+};
 
 export default Contact;

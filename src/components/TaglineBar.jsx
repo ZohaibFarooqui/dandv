@@ -1,31 +1,44 @@
-import React from 'react';
-import { FaMapMarkerAlt, FaEnvelope, FaFacebookF, FaTwitter, FaInstagram, FaLinkedin } from 'react-icons/fa';
+import React, { useState, useEffect } from 'react';
+import { FaSun, FaMoon, FaEnvelope, FaFacebookF, FaInstagram, FaLinkedin } from 'react-icons/fa';
+
 
 const TaglineBar = () => {
+  const [darkMode, setDarkMode] = useState(() => {
+    return localStorage.getItem('theme') === 'dark';
+  });
+
+  useEffect(() => {
+    document.body.classList.toggle('dark-theme', darkMode);
+    localStorage.setItem('theme', darkMode ? 'dark' : 'light');
+  }, [darkMode]);
+
   return (
     <div className="tagline-bar">
       <div className="tagline-content">
-        <h5>Your Imagination, Our Creation</h5>
         <div className="tagline-info">
-          {/* <div className="location-info">
-            <FaMapMarkerAlt className="icon" />
-            <span>Block 7 Gulistan-e-Johar</span>
-          </div> */}
-          {/* <div className="slash-divider">/</div> */}
           <div className="contact">
             <FaEnvelope className="icon" />
             <span className="email-wrapper">
-              <a href="mailto:info@autolane.com">info@devandvisuals.com</a>
+              <a href="mailto:info@devandvisuals.com">info@devandvisuals.com</a>
             </span>
           </div>
         </div>
-        {/* <div className="slash-divider">/</div> */}
+
+        <h5>Your Imagination, Our Creation</h5>
+
         <div className="social-media-links">
-          {/* <a href="https://facebook.com" target="_blank" rel="noopener noreferrer"><FaFacebookF /></a>
-          <a href="https://twitter.com" target="_blank" rel="noopener noreferrer"><FaX /></a> */}
-          <a href="https://www.instagram.com/invites/contact/?igsh=14u3r3mfbnfdm&utm_content=wwtrbb2" target="_blank" rel="noopener noreferrer"><FaInstagram /></a>
-          <a href="https://www.linkedin.com/company/devs-and-visuals" target="_blank" rel="noopener noreferrer"><FaLinkedin /></a>
+          <a href="https://www.facebook.com/share/15pGfSK3hF/" target="_blank" rel="noopener noreferrer"><FaFacebookF /></a>
+          <a href="https://www.instagram.com/devsandvisuals/?utm_source=qr&r=nametag" target="_blank" rel="noopener noreferrer"><FaInstagram /></a>
+          <a href="https://www.linkedin.com/company/devs-and-visuals/" target="_blank" rel="noopener noreferrer"><FaLinkedin /></a>
         </div>
+
+        {/* Night Mode Toggle */}
+        <button 
+          className={`theme-toggle ${darkMode ? 'night' : 'day'}`} 
+          onClick={() => setDarkMode(!darkMode)}
+        >
+          {darkMode ? <FaMoon className="moon-icon" /> : <FaSun className="sun-icon" />}
+        </button>
       </div>
     </div>
   );
