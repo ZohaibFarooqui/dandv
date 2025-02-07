@@ -97,7 +97,7 @@ const NavBar = () => {
                             </li>
                             <li style={{ padding: '10px' }}>
                                 <NavLink to="/digital-marketing" style={{ color: '#555', textDecoration: 'none', fontSize: '16px' }}>
-                                    DigitalMarketing
+                                    Digital Marketing
                                 </NavLink>
                             </li>
                             <li style={{ padding: '10px' }}>

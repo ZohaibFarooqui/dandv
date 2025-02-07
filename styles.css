@@ -1247,8 +1247,8 @@ li {
   top: 0;
   left: 0;
   width: 100%;
-  min-height: 100vh;
-  height: 100%;
+  min-height: 101vh;
+  height: 125%;
   object-fit: cover;
   z-index: -1;
   
@@ -1342,7 +1342,7 @@ li {
 
 @media (max-width: 480px) {
   .about-background-video{
-    height: 160%;
+    height: 170%;
     
   }
   .about-content {
